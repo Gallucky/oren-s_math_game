@@ -1,0 +1,698 @@
+/* Importing Google Fonts */
+/* Orbitron Font: */
+@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&family=Heebo:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Orbitron:wght@400..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+/* Rubik Font: */
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+/* Bebas Neue - Static Font */
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+button:hover,
+select:hover {
+    cursor: url("../../../../images/cursor-click_24x24.png"), pointer !important;
+}
+
+.game-container {
+    width: 50vw;
+
+    align-self: center;
+    justify-self: center;
+
+    min-height: 50vh;
+
+    padding: 2vh;
+    margin: 25vh auto;
+    gap: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+
+    text-align: center;
+
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: gainsboro;
+
+    box-shadow: 0px 0px 30px 0.01px black;
+
+    h1 {
+        font-size: 50px;
+        text-decoration: 3px underline black;
+        text-underline-offset: 6px;
+    }
+
+    h2 {
+        width: 60%;
+        font-size: 30px;
+        margin-block: 10px;
+        margin-inline: auto;
+    }
+
+    .game-configuration {
+        width: 50%;
+        margin-inline: auto;
+        padding: 10px;
+
+        border: 1px solid black;
+        gap: 10px;
+
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+
+        background-color: cornflowerblue;
+        border-radius: 10px;
+
+        h3 {
+            font-size: 25px;
+            text-decoration: underline;
+            text-underline-offset: 6px;
+            margin-bottom: 6px;
+        }
+
+        #difficulty-label,
+        #operator-selection-label {
+            font-size: 20px;
+            font-family: Rubik;
+        }
+    }
+
+    select {
+        width: auto;
+        padding-inline: 5px 0px;
+        font-size: 20px;
+
+        background-color: rgb(147, 184, 252);
+        margin-inline: auto;
+        text-align: center;
+
+        font-weight: 400;
+        font-family: Rubik;
+
+        /* Resetting the border to no border */
+        border: none;
+        border: 1px solid black;
+        border-radius: 20px;
+
+        &:has(option:checked[value="easy"]) {
+            color: green;
+        }
+
+        &:has(option:checked[value="medium"]) {
+            color: yellow;
+        }
+
+        &:has(option:checked[value="hard"]) {
+            color: rgb(255, 30, 0);
+        }
+    }
+
+    .difficulty {
+        font-weight: 600;
+
+        .easy-difficulty {
+            color: green;
+            font-weight: 600;
+        }
+
+        .medium-difficulty {
+            color: yellow;
+            font-weight: 600;
+        }
+
+        .hard-difficulty {
+            color: rgb(255, 30, 0);
+            font-weight: 600;
+        }
+    }
+
+    select:focus {
+        outline: none;
+        border-color: teal;
+
+        /* Default Box Shadow */
+        box-shadow: 0 0 5px teal;
+
+        &:has(option:checked[value="easy"]) {
+            box-shadow: 0 0 5px green;
+        }
+
+        &:has(option:checked[value="medium"]) {
+            box-shadow: 0 0 5px yellow;
+        }
+
+        &:has(option:checked[value="hard"]) {
+            box-shadow: 0 0 5px rgb(255, 30, 0);
+        }
+    }
+
+    .start-game-button {
+        width: 30%;
+        height: 6%;
+
+        margin-block: 10px;
+        margin-inline: auto;
+
+        font-size: 20px;
+
+        background: 0;
+        border: 0;
+        border: 1px solid black;
+
+        font-weight: 600;
+        font-family: Orbitron;
+
+        background-color: cadetblue;
+        border-radius: 16px;
+
+        cursor: url("../../../images/cursor-click_24x24.png"), pointer;
+
+        transition: all 1s ease-in-out;
+    }
+
+    .start-game-button:hover {
+        transform: scale(0.9);
+    }
+
+    /* In Game: */
+    .game-toolbar {
+        width: 100%;
+        min-height: 10%;
+
+        display: flex;
+        align-content: center;
+        justify-content: flex-start;
+
+        gap: 30px;
+
+        /* Only on the level to be aligned to the left via margin-left. */
+        .tool-info-difficulty-level {
+            margin-left: 30px;
+        }
+
+        .tool-info-difficulty-level,
+        .tool-info-operator,
+        .tool-info-number-of-questions {
+            width: auto;
+            height: 80%;
+
+            display: flex;
+            align-content: center;
+            justify-content: center;
+
+            gap: 10px;
+            margin-block: auto;
+
+            font-family: Orbitron;
+            font-weight: 500;
+            user-select: none;
+
+            label {
+                border-block: 1px solid black;
+                line-height: 200%;
+                font-size: 18px;
+            }
+        }
+
+        .tool-info-abort-game {
+            width: auto;
+            height: 80%;
+
+            display: flex;
+            align-content: center;
+            justify-content: center;
+
+            margin-left: auto;
+
+            #abort-game-btn {
+                width: 1.5vw;
+                height: 1.5vw;
+
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                justify-content: center;
+
+                user-select: none;
+
+                border: 1px groove black !important;
+                outline: 3px groove silver !important;
+
+                border-radius: 16px;
+                background-color: teal !important;
+
+                cursor: url("../../../images/cursor-click_24x24.png"), pointer;
+
+                transition: all 0.5s ease-in-out;
+
+                &:hover {
+                    transform: scale(0.9);
+                }
+
+                span {
+                    cursor: url("../../../images/cursor-click_24x24.png"), pointer;
+                    text-align: center;
+                    align-self: center;
+                    justify-self: center;
+                    line-height: 25%;
+                    text-indent: 0.8%;
+                }
+            }
+        }
+    }
+
+    .game-body {
+        width: 100%;
+        min-height: 60%;
+
+        border: 1px solid black;
+
+        .question {
+            margin-top: 5%;
+            font-family: Bebas Neue;
+            font-size: 90px;
+
+            user-select: none;
+        }
+
+        .answer {
+            display: flex;
+
+            flex-direction: column;
+            align-content: center;
+            justify-content: center;
+
+            gap: 20px;
+
+            .answer-input {
+                width: fit-content;
+                height: fit-content;
+
+                display: flex;
+                align-content: center;
+                justify-content: center;
+
+                gap: 10px;
+                margin-inline: auto;
+
+                label {
+                    font-family: Orbitron;
+                    font-size: 19px;
+                    font-weight: 600;
+
+                    line-height: 160%;
+                }
+
+                input {
+                    outline: none;
+                    background: none;
+
+                    border: 1px solid black !important;
+                    border-radius: 3px;
+
+                    background-color: lightblue;
+
+                    line-height: 150%;
+                    text-indent: 5px;
+                    caret-shape: block;
+
+                    font-family: Rubik;
+
+                    transition: border 0.1s ease-in-out;
+
+                    cursor: url("../../../images/cursor-click_24x24.png"), pointer;
+
+                    &:focus {
+                        border: 3px groove black !important;
+                    }
+                }
+
+                input[type="number"] {
+                    &::-webkit-inner-spin-button,
+                    &::-webkit-outer-spin-button {
+                        -webkit-appearance: none;
+                    }
+                }
+            }
+
+            #submit-answer {
+                width: 20%;
+                height: fit-content;
+
+                user-select: none;
+
+                margin-bottom: 20px;
+                margin-inline: auto;
+
+                border: 1px groove black !important;
+                outline: 3px groove silver !important;
+
+                border-radius: 16px;
+
+                background: none;
+                background-color: teal;
+
+                font-size: 19px;
+                font-weight: 600;
+                font-family: Orbitron;
+
+                cursor: url("../../../images/cursor-click_24x24.png"), pointer;
+
+                transition: all 0.5s ease-in-out;
+
+                &:hover {
+                    transform: scale(0.9);
+                }
+            }
+        }
+    }
+
+    .game-information {
+        width: 100%;
+        min-height: 30%;
+
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        flex-grow: 10;
+
+        .information-table {
+            width: 90%;
+            height: 80%;
+
+            align-self: center;
+
+            border: 1px solid black !important;
+            border-collapse: collapse;
+
+            thead {
+                font-family: Orbitron;
+                font-size: 19px;
+
+                tr {
+                    background-color: rgb(100, 109, 233);
+                }
+            }
+
+            tbody {
+                font-family: Rubik;
+                font-size: 19px;
+
+                tr:nth-child(odd) {
+                    background-color: lightskyblue;
+                }
+
+                tr:nth-child(even) {
+                    background-color: lightseagreen;
+                }
+            }
+
+            *:not(:last-child) {
+                border-right: 1px solid black;
+            }
+
+            tr {
+                border-top: 1px solid black;
+            }
+        }
+    }
+
+    dialog {
+        #abort-game-confirmation-title {
+            width: 100%;
+            height: fit-content;
+
+            margin-top: 40px;
+
+            font-family: Orbitron;
+            font-size: 20px !important;
+
+            text-align: center;
+        }
+
+        #abort-game-confirmation-buttons {
+            width: 100%;
+            height: fit-content;
+
+            margin-bottom: 40px !important;
+
+            #abort-confirm-btn,
+            #abort-cancel-btn {
+                width: fit-content;
+                height: fit-content;
+
+                padding: 1px 10px;
+
+                color: white;
+
+                text-align: center;
+                font-size: 15px;
+                font-family: Orbitron;
+
+                border: 3px groove black !important;
+                border-radius: 16px;
+
+                background-color: teal;
+
+                cursor: url("../../../images/cursor-click_24x24.png"), pointer;
+
+                transition: all 0.5s ease-in-out;
+
+                &:hover {
+                    transform: scale(0.9);
+                }
+            }
+
+            #abort-confirm-btn {
+                color: red;
+            }
+
+            #abort-cancel-btn {
+                color: rgb(5, 134, 5);
+                span {
+                    filter: brightness(2);
+                    cursor: url("../../../images/cursor-click_24x24.png"), pointer;
+                }
+            }
+        }
+    }
+}
+
+@keyframes fadeOutShrink {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.fade-out-shrink {
+    animation: fadeOutShrink 0.5s ease-out;
+}
+
+.fade-out {
+    animation: fadeOut 0.75s ease-out;
+}
+
+.answer-submitted {
+    user-select: text !important;
+}
+
+.score-area {
+    width: 75%;
+    align-self: center;
+    justify-self: center;
+    margin-top: 20px;
+
+    padding: 5%;
+    border: 1px solid black;
+
+    background: linear-gradient(0deg, transparent, rgba(0, 0, 255, 0.5)),
+        linear-gradient(45deg, rgba(0, 128, 128, 0.7), transparent),
+        linear-gradient(135deg, rgba(0, 0, 255, 0.4), rgba(0, 128, 128, 0.6));
+
+    border-radius: 16px;
+    border: 4px groove black;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px,
+        rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px,
+        rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+    .score {
+        width: fit-content;
+        height: 10fr;
+
+        text-align: center;
+        font-family: Orbitron;
+        font-size: 70px;
+        font-weight: 500;
+
+        user-select: none;
+        cursor: url("../../../images/cursor_24x24.png"), default;
+    }
+
+    .info {
+        width: fit-content;
+        height: 1fr;
+        margin-top: 10px;
+        margin-inline: auto;
+
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+
+        font-weight: 500;
+        font-family: Orbitron;
+        font-size: 20px;
+        padding: 20px;
+    }
+}
+
+.score {
+    &[data-score="red"] {
+        color: red;
+    }
+    &[data-score="orange"] {
+        color: orange;
+    }
+    &[data-score="yellow"] {
+        color: yellow;
+    }
+    &[data-score="lime"] {
+        color: lime;
+    }
+    &[data-score="green"] {
+        color: green;
+    }
+    &[data-score="#006400"] {
+        color: #006400;
+    }
+}
+
+.actions {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    gap: 20px;
+
+    margin-block: 20px 10px;
+
+    button {
+        width: fit-content;
+        height: fit-content;
+
+        border-radius: 16px;
+        border: 3px groove black !important;
+
+        padding: 0px 10px;
+
+        font-family: Orbitron;
+        font-size: 19px;
+        font-weight: 600;
+
+        background-color: rgb(100, 109, 233);
+
+        cursor: url("../../../images/cursor-click_24x24.png"), pointer;
+
+        transition: all 0.5s ease-in-out;
+
+        &:hover {
+            transform: scale(0.9);
+        }
+    }
+}
+
+.rainbow-text {
+    /* Fallback for older browsers */
+    background: red;
+
+    --gradient-colors: red, orange, yellow, green, cyan, blue, violet, red, orange, yellow, green,
+        cyan, blue, violet, red;
+
+    /* For older WebKit browsers */
+    background: -webkit-linear-gradient(to right, var(--gradient-colors));
+    /* For older Firefox */
+    background: -moz-linear-gradient(to right, var(--gradient-colors));
+    /* For older Opera */
+    background: -o-linear-gradient(to right, var(--gradient-colors));
+    /* Standard Syntax */
+    background: linear-gradient(to right, var(--gradient-colors));
+
+    background-size: 200% 100%;
+    background-position: 0% 50%;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 20px;
+    font-family: Orbitron;
+    font-weight: 500;
+
+    animation: rainbow-gradient-animation 20s linear infinite forwards;
+}
+
+@keyframes rainbow-gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+.previous-game {
+    width: fit-content;
+    text-align: center;
+
+    font-family: Orbitron;
+    font-weight: 500;
+    font-size: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+
+    align-self: center;
+    justify-self: center;
+
+    margin-bottom: -10px;
+    padding-inline: 10px;
+
+    border: 3px groove black;
+    border-radius: 16px;
+    box-shadow: 0px 0px 10px 0.01px black;
+
+    h3 {
+        font-size: 30px;
+    }
+
+    #previous-game-score {
+        font-size: 25px;
+    }
+}
