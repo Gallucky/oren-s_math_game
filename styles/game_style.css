@@ -18,7 +18,7 @@ body {
 
 button:hover,
 select:hover {
-    cursor: url("../../../../images/cursor-click_24x24.png"), pointer !important;
+    cursor: url("../images/cursor-click_24x24.png"), pointer !important;
 }
 
 .game-container {
