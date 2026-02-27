@@ -177,7 +177,7 @@ select:hover {
         background-color: cadetblue;
         border-radius: 16px;
 
-        cursor: url("../../../images/cursor-click_24x24.png"), pointer;
+        cursor: url("../images/cursor-click_24x24.png"), pointer;
 
         transition: all 1s ease-in-out;
     }
@@ -253,7 +253,7 @@ select:hover {
                 border-radius: 16px;
                 background-color: teal !important;
 
-                cursor: url("../../../images/cursor-click_24x24.png"), pointer;
+                cursor: url("../images/cursor-click_24x24.png"), pointer;
 
                 transition: all 0.5s ease-in-out;
 
@@ -262,7 +262,7 @@ select:hover {
                 }
 
                 span {
-                    cursor: url("../../../images/cursor-click_24x24.png"), pointer;
+                    cursor: url("../images/cursor-click_24x24.png"), pointer;
                     text-align: center;
                     align-self: center;
                     justify-self: center;
@@ -332,7 +332,7 @@ select:hover {
 
                     transition: border 0.1s ease-in-out;
 
-                    cursor: url("../../../images/cursor-click_24x24.png"), pointer;
+                    cursor: url("../images/cursor-click_24x24.png"), pointer;
 
                     &:focus {
                         border: 3px groove black !important;
@@ -368,7 +368,7 @@ select:hover {
                 font-weight: 600;
                 font-family: Orbitron;
 
-                cursor: url("../../../images/cursor-click_24x24.png"), pointer;
+                cursor: url("../images/cursor-click_24x24.png"), pointer;
 
                 transition: all 0.5s ease-in-out;
 
@@ -467,7 +467,7 @@ select:hover {
 
                 background-color: teal;
 
-                cursor: url("../../../images/cursor-click_24x24.png"), pointer;
+                cursor: url("../images/cursor-click_24x24.png"), pointer;
 
                 transition: all 0.5s ease-in-out;
 
@@ -484,7 +484,7 @@ select:hover {
                 color: rgb(5, 134, 5);
                 span {
                     filter: brightness(2);
-                    cursor: url("../../../images/cursor-click_24x24.png"), pointer;
+                    cursor: url("../images/cursor-click_24x24.png"), pointer;
                 }
             }
         }
@@ -617,7 +617,7 @@ select:hover {
 
         background-color: rgb(100, 109, 233);
 
-        cursor: url("../../../images/cursor-click_24x24.png"), pointer;
+        cursor: url("../images/cursor-click_24x24.png"), pointer;
 
         transition: all 0.5s ease-in-out;
 
